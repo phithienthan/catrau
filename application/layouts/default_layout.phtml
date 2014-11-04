@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title><?php echo $this->getTitle();?></title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta content="<?php echo $this->getDescription();?>" name="description">
+        <meta content="<?php echo $this->getKeywords();?>" name="keywords">
+        <meta content="INDEX,FOLLOW" name="robots">
+        
+        <script type="text/javascript" src="<?php echo SKIN_PATH?>default/js/jquery-1.10.2.js"></script>            
+        
+        <link href="<?php echo SKIN_PATH; ?>default/css/styles.css" rel="stylesheet" type="text/css" />
+        <link href="<?php echo SKIN_PATH; ?>default/plugins/dropmenu/css/menu.css" rel="stylesheet" type="text/css" />    
+    </head>
+    <body>        
+        <div class="main">                
+            <?php $this->block("header") ?>
+            <div class="container">
+                <?php $this->content() ?>
+                <div class="clr"></div>                
+            </div>
+            <?php $this->block("footer") ?>        
+        </div>    
+        <script type="text/javascript">
+
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-23119574-2']);
+        _gaq.push(['_trackPageview']);
+
+        (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+
+        </script>        
+    </body>
+</html>
