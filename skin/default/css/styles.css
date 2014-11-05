@@ -2,9 +2,13 @@ HTML, BODY {
 	 background-color:#0082bf; font: 11px Tahoma, Verdana, Arial, Helvetica, sans-serif; COLOR: #000; margin-top:8px;
 }
 a {
-	text-decoration:none;
+    color: #222222;
+    text-decoration: none;
 }
-
+a:hover{
+    color: #666666;
+    text-decoration: none;
+}
 img {
 	border:0;
 }
@@ -217,14 +221,14 @@ section.content_detail article header {
 section.sec_content article {
     /* border-bottom: 1px solid #F1F1F1; */
     float: left;
-    margin: 0 0 10px;
+    margin: 0 0 10px 8px;
     padding: 0 0 10px;
     width: 641px;
 }
 section.content_detail article .cover{    
-    height: 145px;
+    height: 110px;
     margin: 5px 2% 0 0;
-    width: 220px;
+    width: 180px;
     border: solid 1px #ccc;
     background-repeat: no-repeat;
     background-position: center top;    
