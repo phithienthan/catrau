@@ -65,7 +65,7 @@ Class articleModel Extends baseModel {
     
     public function getAllArticlesByCategoryId($categoryId,$page,$pageSize) {                
         $page = $this->_mysql->quote($page);        
-        $qr = 'SELECT * FROM ' . $this->_table.' WHERE status=1 and category_id = '. $categoryId .' LIMIT '.($page-1)*$pageSize. ','. $pageSize;        
+        $qr = 'SELECT * FROM ' . $this->_table.' WHERE status=1 and category_id = '. $categoryId .' LIMIT '.($page-1)*$pageSize. ','. $pageSize;                
         $result = $this->_mysql->execute_query_to_array($qr);
         return $result;
     }    

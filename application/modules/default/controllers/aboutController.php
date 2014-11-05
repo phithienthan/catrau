@@ -20,14 +20,9 @@ Class aboutController Extends defaultController {
         $this->view->data['categoryInfo'] = $categoryInfo;
         if($article != null){
             $this->view->setTitle($article[0]["title"]);
+            $this->view->setDescription($article[0]["title"]);
+            $this->view->setKeywords($article[0]["title"]);             
         } 
-        else{
-            $this->view->setTitle("Nhom Xingfa, Cua so Xingfa, xingfawindow, xingfawindow.vn");
-            $this->view->setDescription("Nhom Xingfa, Cua so Xingfa, xingfawindow, xingfawindow.vn");
-            $this->view->setKeywords("Nhom Xingfa, Cua so Xingfa, xingfawindow, xingfawindow.vn");
-        }
-        $this->view->setDescription($article[0]["title"]);
-        $this->view->setKeywords($article[0]["title"]); 
         
         $this->view->show('index');
         /* load layout template */        

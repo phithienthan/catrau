@@ -1,26 +1,30 @@
-<?php $this->block("unslider") ?>
-<section class="main_content">
-    <section class="content">
-        <section class="column_left fl">
-            <header>
-                Sản phẩm nổi bật
-            </header>
-            <?php foreach ($products as $product) { ?>
-                <article>
-                    <?php if($product['pro_image'] != NULL){?>
-                        <div class="cover" style="background-image: url(&quot;<?php echo AVATAR_RESIZE_PATH."180x110/".$product['pro_image'] ?>&quot;);"><a href="/<?php echo $product['url_key'];?>/"></a></div>
-                    <?php } else { ?>
-                        <div class="cover" style="background-image: url(&quot;<?php echo AVATAR_RESIZE_PATH."180x110/".$product['pro_image'] ?>&quot;);"><a href="/<?php echo $product['url_key'];?>/"></a></div>
-                    <?php } ?>
-                    <header>
-                        <p class="news_title"><a href="/<?php echo $product['url_key']; ?>"><?php echo $product['pro_name']; ?></a></p>
-                        <?php //echo $product['description']; ?>
-                    </header>                
-                </article>
-            <?php } ?>
-        </section>        
-        <section class="sidebar fl">
-            <?php echo $this->block('category'); ?>
-        </section>           
-    </section>
-</section>
+<table border=0 cellpadding=0 cellspacing=0 width=100%>
+    <tr><td height=50 class="title-menu"><img src="<?php echo SKIN_PATH ?>default/images/icon.gif" style="margin:5px 5px 0px 0px;">GIỚI THIỆU<br><hr color=#dfdfdf></td></tr>
+    <tr><td>
+        <table border="0" width="100%"0 cellpadding=0 cellspacing=0>
+            <tr>
+                <td width=50% class="content"><img src=<?php echo SKIN_PATH ?>default/images/photo1.jpg><ul type="square">
+                    <li>
+                    <p align="justify">Ninh Bình từng là kinh đô của Việt Nam ở thế kỷ X, là địa bàn quan trọng về quân sự các thời Đinh, Tiền Lê, Lý, Trần, Tây Sơn. Với vị trí đặc biệt về giao thông, địa hình, Ninh Bình không những nổi tiếng về những khu du lịch mang đậm tính lịch sử văn hóa mà còn được biết đến là nơi hấp dẫn du khách trong và ngoài nước với những món ăn đặc biệt: dê núi Ninh Bình, cơm cháy Ninh Bình, rượu Kim Sơn, nem Yên Mạc, mắm tép Gia Viễn, miến lươn Phát Diệm, dứa Hồng Giao, cá Tràu tiến vua - cá Rô tổng trường,...
+                    </li><p>
+                    <li>
+                    <p align="justify">Trong số những đặc sản nêu trên thì cá Tràu tiến vua, một loài cá đã có từ thời Vua Đinh Tiên Hoàng và được coi như là loài thủy sản quý hiếm để dâng lên đức Tiên hoàng đế.
+                    </li>
+                </ul>
+                </td>
+                <td width=50% class="content">
+                <ul type="square">
+                    <li>
+                    <p align="justify"><b>Cá tràu tiến vua</b> được phân bố chủ yếu trong hệ sinh thái ngập nước xen lẫn các hang động vùng núi đá vôi tỉnh Ninh Bình, cụ thể ở các huyện : Nho Quan, Gia Viễn, Hoa Lư…Trong đó, trung tâm là vùng đất Hoa Lư bao gồm các xã: Trường Yên, Ninh Hòa, Ninh Xuân, Ninh Thắng, Ninh Vạn, Ninh An, Ninh Khang, Ninh Giang, Ninh Mỹ và thị trấn Thiên Tôn. Đặc biệt gặp nhiều ở vùng Đền Trần, Đầm dơi. </li>
+                </ul>
+                <p align=right">
+                <img border="0" src="<?php echo SKIN_PATH ?>default/images/photo2.jpg" width="272" height="204"></p>
+                <ul type="square">
+                    <li>
+                    <p align="justify">Cá Tràu thân hình trụ tròn, phần từ vây hậu môn và đuôi dẹp hai bên. Đầu dẹp bằng. Miệng rộng, rạch miệng kéo dài quá viền sau mắt. Mõm ngắn và dẹp, trên mõm có một đôi râu, mắt to nằm trên mặt lưng của đầu. </li>
+                </ul>
+                </td>
+            </tr>
+        </table>
+        <p></td></tr>
+</table>

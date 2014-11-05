@@ -9,30 +9,40 @@
         
         <script type="text/javascript" src="<?php echo SKIN_PATH?>default/js/jquery-1.10.2.js"></script>            
         
-        <link href="<?php echo SKIN_PATH; ?>default/css/styles.css" rel="stylesheet" type="text/css" />
-        <link href="<?php echo SKIN_PATH; ?>default/plugins/dropmenu/css/menu.css" rel="stylesheet" type="text/css" />    
+        <link href="<?php echo SKIN_PATH; ?>default/css/styles.css" rel="stylesheet" type="text/css" />        
+        <link rel="shortcut icon" href="<?php echo SKIN_PATH; ?>default/images/favicon.ico" />
     </head>
     <body>        
-        <div class="main">                
-            <?php $this->block("header") ?>
-            <div class="container">
-                <?php $this->content() ?>
-                <div class="clr"></div>                
-            </div>
-            <?php $this->block("footer") ?>        
-        </div>    
-        <script type="text/javascript">
-
-        var _gaq = _gaq || [];
-        _gaq.push(['_setAccount', 'UA-23119574-2']);
-        _gaq.push(['_trackPageview']);
-
-        (function() {
-            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-        })();
-
-        </script>        
+        <table border="0" cellpadding=0 cellspacing=0 width=845 align=center>
+            <tr>
+                <td>
+                    <table border=0 cellpadding=0 cellspacing=0 bgcolor=#FFFFFF width=100% height=200>
+                        <tr>
+                            <td width=8></td>
+                            <td width=170 valign=top>
+                                <?php $this->block("left") ?>
+                            </td>
+                            <td width=8></td>
+                            <td width=651 valign=top>
+                                <table border=0 cellpadding=0 cellspacing=0>
+                                    <tr><td height=8></td></tr>
+                                    <?php $this->block("header") ?>
+                                    <!--Content-->
+                                    <tr><td valign=top id="boder">                                       
+                                        <?php $this->content() ?>  
+                                    </td></tr>                                    
+                                    <!--End Content-->
+                                    <tr><td height=10></td></tr>
+                                </table>
+                            </td>
+                            <td width=8></td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <!--Footer-->
+            <?php $this->block("footer") ?>
+            <!--End Footer-->
+        </table>                                                                                  
     </body>
 </html>

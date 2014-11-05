@@ -1,110 +1,168 @@
-/* CSS Document */
-* { margin:0; padding:0;}
-
-html, body { height:100%; font-size: 13px; background: none repeat scroll 0 0 #E2E2E2}
-
-html, input, textarea, select	{font-family: Arial, sans-serif; color:#444444;}
-
-a{
-
-    color:#222222;
-    text-decoration:none;
+HTML, BODY {
+	 background-color:#0082bf; font: 11px Tahoma, Verdana, Arial, Helvetica, sans-serif; COLOR: #000; margin-top:8px;
+}
+a {
+	text-decoration:none;
 }
 
-a:hover{
+img {
+	border:0;
+}
+.menuT {
+	font-weight:bold;
+	font-size: 11px;
+	padding-left: 12px;
+	border-bottom: 1px solid #505050;
+}
+.menuB {
+	font-weight:bold;
+	font-size: 11px;
+	padding-top:5px;
+	padding-left: 12px;
+}
+#table1 {
+	background-color: #edf2e6;
+	border-top: 1px solid #bdc7b6;	
+	border-left: 1px solid #bdc7b6;
+	border-right: 1px solid #bdc7b6;
+	border-bottom: 1px solid #bdc7b6;
 
-    color:#686868;
-    /* text-decoration:underline; */
+}
+.content {
+	font-size:12px;
+	color:#6a6a6a;
+	padding-right:10px;
+	text-align: right;
+}
+#boder {
+	border-left: 1px solid #bdc7b6;
+	border-right: 1px solid #bdc7b6;
+	border-bottom: 1px solid #bdc7b6;
+}
+.CSSmenu {
+	font-family: Tahoma;
+	font-size: 11px;
+	margin: 0px 5px 0px 5px;
+	border-bottom: 1px solid #dedede;
+	height:30px;
+}
+.CSSmenu A {
+	display:block; background: url(../images/icon-menu.gif) no-repeat scroll 8% 50%;
+	color: #000; height:22px;
+	padding:8px 0px 0px 30px;
+}
+.CSSmenu A:hover {
+	display:block; background: url(../images/icon-menu.gif) #0096dc no-repeat scroll 8% 50%;
+	color: #fff; height:22px;
+	padding:8px 0px 0px 30px;
+
+}
+.titleT {
+	font-weight: bold;
+	font-size: 12px;
+	color: #ff7200;
+}
+.title-menu {
+	font-size: 18px;
+	font-family: Times New Roman;
+	color: #0096dc;
+	font-weight:bold;
+	padding-left:10px;
+	padding-right:10px;
+	
+}
+.title-menu-right {
+	font-size: 12px;
+	color: #fff;
+	font-weight:bold;
+	padding-left:47px;
+	
+}
+#oder {
+	background-color: #e8f8e3;
+	border-left: 1px solid #bcf14e;
+	border-right: 1px solid #bcf14e;
+}
+#oder1 {
+	font-family: Tahoma;
+	font-weight:bold;
+	line-height:18px;
+	font-size: 11px;
+}
+#oder1 A {
+	color: #1f1e50;
+}
+#oder1 A:hover {
+	color: #f26100;
 }
 
-li{
-    list-style: none;
+.CSSinput {
+	border: 1px solid #95c3d8; height: 22px; width: 140px; font-size: 11px; font-family: Tahoma; padding-left:5px; padding-top: 5px;
+}
+.input {
+	padding:15px 0px 10px 10px;
+}
+.top-tour {
+	margin:10px 9px 5px 9px;
+	font-weight: bold;
+}
+.about {
+	font-size: 11px;
+	padding-right:10px;
+}
+.menu {
+	color: #000;
+	font-family: Tahoma, Geneva, sans-serif;
+	font-size: 11px;
+	text-align: center;
+}
+.menu a {
+	color: #000;
+	font-weight: bold;
+}
+.menu a:hover {
+	color: #007db7;
+	font-weight: bold;
+	text-decoration: underline;
+}
+.title {
+	font-weight: bold;
+	font-size: 11px;
+	color: #034000;
+	padding-left:10px;	
+}
+.footer {
+	font-size: 11px;
+	padding-top: 15px;
+	color: #fff;
+	padding-bottom:10px;	
+}
+.footer a {
+	font-size: 11px;
+	font-weight: bold;
+	color: #fff;
+}
+.footer a:hover {
+	font-size: 11px;
+	font-weight: bold;
+	text-decoration: underline;
+	color: #000;
+}
+.content img
+{
+    margin: 0 0 0 0px;
 }
 
-p{
-
-    margin: 9px 0px 9px 0px;
-
-}
-.clr{
-    clear: both;
-}
-.fl{
-    float: left;
-}
-/*page layout*/
-.wrapper{
-    width: 100%;
-}
-.container{        
-    padding: 35px 0 10px;   
-    background: #ffffff;    
-}
-.main_content {
-    min-height: 400px;
-    width: 1000px;
-    margin: 0 auto;   
-}
-.content{
-    margin: 0;
-    padding: 10px 0 10px 0;
-}
-.column_left{
-    width: 700px;    
-}
-.div_footer{
-    width: 1000px;
-    margin: 0 auto;    
-    font-size: 12px;    
-    overflow: hidden;
-    padding: 14px 0;
-    position: relative;    
-}
-
-/*header*/
-
-.div_header {
-    background: rgb(46,192,210);
-    float: left;
-    width: 100%;
-    min-height: 6px;    
-}
-
-.top_header {
-    background: url("/skin/default/images/header-tail.gif") repeat-x scroll 0 0 #E1E1E1;    
-    position: fixed;        
-    width:100%;  
-    min-height: 35px;
-    z-index: 1000;
-}
-
-.top_header a{
-    font-weight: bold;
-}
-
-.top_content{
-    width:1000px;
-    margin: 0 auto;        
-}
-.hotline{
-    float: right;
-    padding: 6px 0 0 0;
-    text-transform: uppercase;
-    color: rgb(247, 19, 19); font-size: 20px; font-family: Arial,sans-serif; padding-bottom: 0px; text-shadow: 0px 0px 0px rgb(224, 0, 0), 1px 0px 0px rgb(210, 0, 0), 2px 0px 0px rgb(197, 0, 0), 3px 0px 2px rgba(0, 0, 0, 0.05), 3px 0px 1px rgba(0, 0, 0, 0.5), 0px 0px 2px rgba(0, 0, 0, 0.2); font-weight: normal; font-style: normal; text-decoration: none;
-    
-}
 /* news */
-
-section.column_left > header {
-    border-bottom: 1px solid #E5E5E5;
-    /* border-top: 1px solid #0098D3; */
+section.sec_content > header {
+    border-bottom: 1px solid #E5E5E5;    
     text-transform: uppercase;
     font-weight: bold;
     margin: 10px 0 8px 0;
-    padding: 8px 0 6px;
-    width: 98%;
+    padding: 8px 0 6px 8px;
+    width: 641px;
 }
-section.content > header {
+section.content_detail > header {
     border-bottom: 1px solid #E5E5E5;
     /* border-top: 1px solid #0098D3; */
     text-transform: uppercase;
@@ -135,34 +193,35 @@ section.content > header {
     line-height: 12px;
     color: #888;    
     margin-top: 7px;
+    padding-right: 8px;
 }
-section.content article {
+section.content_detail article {
     width: 490px;
     margin-right: 10px;
     float:left;
 }
 
-section.column_left article .cover {
+section.sec_content article .cover {
     float: left;
     height: 110px;
     margin-right: 2%;
     margin-top: 5px;
     width: 180px;
 }
-section.column_left article header {
+section.sec_content article header {
     margin-top: -5px;
 }
-section.content article header {
+section.content_detail article header {
     margin-top: -5px;
 }
-section.column_left article {
+section.sec_content article {
     /* border-bottom: 1px solid #F1F1F1; */
     float: left;
     margin: 0 0 10px;
     padding: 0 0 10px;
-    width: 33%;
+    width: 641px;
 }
-section.content article .cover{    
+section.content_detail article .cover{    
     height: 145px;
     margin: 5px 2% 0 0;
     width: 220px;
@@ -170,93 +229,9 @@ section.content article .cover{
     background-repeat: no-repeat;
     background-position: center top;    
 }
-section.content article .cover:hover{
+section.content_detail article .cover:hover{
     border: solid 1px #2EC0D2;
 }
-/* slidebar */
-* {
-    -moz-box-sizing: border-box;
+.news_item{
+    margin: 0 0 0 8px;
 }
-.sidebar {
-    float: right;
-    margin-top: 4px;
-    position: relative;
-    width: 300px;
-    z-index: 100;
-}
-.topic {
-    border: solid 1px #ccc;
-    float: left;
-    margin: 0 0 16px;
-    width: 100%;    
-}
-.sidebar section.topic > header {
-    margin-bottom: 0;
-}
-.sidebar section > header {
-    background: none repeat scroll 0 0 #FFFFFF;
-    border-bottom: 1px solid #E5E5E5;
-    box-shadow: 0 2px 0 #FCFAFA;
-    height: auto;
-    margin-bottom: 0;
-    padding: 0 10px;
-}
-.sidebar section > header h1 {
-    font-size: 1.1em;
-    line-height: 1.4;
-    margin: 8px 0;
-    text-transform: uppercase;
-}
-.sidebar section article {
-    border-bottom: 1px dashed #F1F1F1;
-    float: left;
-    margin-bottom: 0;
-    padding: 8px 10px;
-    
-    color: #000000;    
-    position: relative;
-    width: 300px;
-    z-index: 1;    
-}
-
-.sidebar section.topic article.featured .cover {
-    display: block;
-    float: none;
-    height: 200px;
-    margin-bottom: 6px;
-    margin-top: 6px;
-    width: 100%;
-}
-.sidebar section.topic article .cover {
-    display: none;
-}
-.sidebar section article header h1 {
-    display: inline;
-    height: auto;
-    padding: 0;
-    text-transform: none;
-}
-.sidebar section article header {
-    margin-top: 0;
-}
-article header h1 {
-    font-size: 12px;
-    line-height: 16px;
-    margin: 0;
-}
-
-article .cover a {
-    display: block;
-    height: 100%;
-    width: 100%;
-}
-/* end slidebar */
-
-/* Feedback */
-.column_left section.cateL section.lblFeedback {
-    width: 90px;
-}
-.column_left section {
-    margin: 10px 0 0 0;
-}
-/* End Feedback */

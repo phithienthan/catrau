@@ -1,16 +1,23 @@
-<div class="top_header">
-    <div class="div_header"></div>
-    <div class="clr"></div>
-    <div class="top_content">
-        <!-- Main menu -->
-        <div class="fl"><a href="/"><img src="<?php echo SKIN_PATH ?>default/plugins/dropmenu/images/home_ico.png" /></a></div>
-        <div class="nav fl">  
-            <?php echo $menuHtml;?>           
-        </div>
-        <div class="hotline">            
-            Hotline:  <?php echo $hotline;?>             
-        </div>
-        <div class="clr"></div>
-        <!-- End Main menu -->
-    </div>
-</div>
+<!--Banner-->
+<tr><td height=236>
+    <img src="<?php echo SKIN_PATH ?>default/images/banner.jpg">
+    <?php //$this->block("unslider") ?>
+</td></tr>
+<!--End Banner-->
+<tr><td height=5></td></tr>
+<!--menu ngang-->
+<tr>
+    <td height=36>
+        <table border=0 cellpadding=0 cellspacing=0 height=36 width=100%>
+            <tr>
+                <td background="<?php echo SKIN_PATH ?>default/images/bg-menu-left.gif" width=6></td>
+                <td background="<?php echo SKIN_PATH ?>default/images/bg-menu.gif" width=639>
+                    <?php echo $menuHtml;?>
+                </td>
+                <td background="<?php echo SKIN_PATH ?>default/images/bg-menu-right.gif" width=6></td>
+            </tr>
+        </table>
+    </td>
+</tr>
+<!--End menu ngang-->
+<?php //echo $hotline;?>             

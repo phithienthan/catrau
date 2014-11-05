@@ -1,41 +1,30 @@
 <?php
-/*
- * @author quyetnd
- */
 
-class default_block_header Extends baseBlock{    
-    public function init(){
-        $requestPath = $this->request->getRequestPath();        
-        $categoryModel = $this->model->get('category');
-        $parentCategorys = $categoryModel->getCategoryByParentId(0);
-        $menuHtml = "";
-        if(count($parentCategorys)>0){
-            $menuHtml = "<ul>";
-            foreach($parentCategorys as $parentCategory){  
-                if($requestPath != "/".$parentCategory['url_key']){
-                    $menuHtml .= "<li><a href=\"/".$parentCategory['url_key']."/\">".$parentCategory['title']."</a>";
-                } else {
-                    $menuHtml .= "<li class=\"active\"><a href=\"/".$parentCategory['url_key']."/\">".$parentCategory['title']."</a>";
+    /*
+     * @author quyetnd
+     */
+
+    class default_block_header Extends baseBlock {
+
+        public function init() {
+            $requestPath = $this->request->getRequestPath();
+            $categoryModel = $this->model->get('category');
+            $parentCategorys = $categoryModel->getCategoryByParentId(0);
+            $menuHtml = "";
+            if (count($parentCategorys) > 0) {
+                $menuHtml = "<table border=\"0\" cellpadding=0 cellspacing=0 width=\"100%\" height=100%><tr class=\"menu\">";
+                foreach ($parentCategorys as $parentCategory) {
+                    $menuHtml .= "<td><a href=\"/" . $parentCategory['url_key'] . "/\">" . $parentCategory['title'] . "</a></td><td width=1><img src=" . SKIN_PATH . "default/images/bg-menu-line.gif></td>";
                 }
-                $categoryChildren = $categoryModel->getCategoryByParentId($parentCategory['id']);
-                if(count($categoryChildren)>0){
-                    $menuHtml .= "<ul>";                
-                    foreach($categoryChildren as $categoryChild){  
-                            $menuHtml .= "<li><a href=\"/".$categoryChild['url_key']."/\">".$categoryChild['title']."</a>";                    
-                    }  
-                    $menuHtml .= "</ul>";
-                }
-                $menuHtml .= "</li>";
-                
+                $menuHtml .= "</tr></table>";
             }
-            $menuHtml .= "</ul>";
+            $this->data['menuHtml'] = $menuHtml;
+            //hotline
+            $contactModel = $this->model->get('contact');
+            $contactInfo = $contactModel->getContactInfo(1);
+            $this->data['hotline'] = $contactInfo['hotline'];
         }
-        $this->data['menuHtml'] = $menuHtml;
-        //hotline
-        $contactModel = $this->model->get('contact');
-        $contactInfo = $contactModel->getContactInfo(1);
-        $this->data['hotline'] = $contactInfo['hotline'];
+
     }
-}
 
 ?>

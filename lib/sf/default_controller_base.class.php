@@ -6,7 +6,12 @@
 Class defaultController Extends baseController {
 
     public function init() {               
-        $this->view->set_layout('default_layout');       
+        $this->view->set_layout('default_layout');   
+        
+        $this->view->setTitle(DEFAULT_TITLE);
+        $this->view->setDescription(DEFAULT_DESCRIPTION);
+        $this->view->setKeywords(DEFAULT_KEYWORDS);        
+        
         /* Save static visitor */
         $staticModel = $this->model->get('static');
         $curUrl = Helper::getInstance()->curPageURL();            
