@@ -10,12 +10,11 @@
                 $i++;
                 if($i < count($categorys)){
                 ?>
-                <a href="<?php echo $parentCategory['url_key']; ?>"><?php echo $cate["title"]; ?></a>&nbsp;&nbsp; |&nbsp;&nbsp; 
+                <a href="<?php echo $cate['url_key']; ?>"><?php echo $cate["title"]; ?></a>&nbsp;&nbsp; |&nbsp;&nbsp; 
                 <?php } else {?>
-                <a href="<?php echo $parentCategory['url_key']; ?>"><?php echo $cate["title"]; ?></a>
+                <a href="<?php echo $cate['url_key']; ?>"><?php echo $cate["title"]; ?></a>
                 <?php } ?>
             <?php } ?>        
         <img src=<?php echo SKIN_PATH ?>default/images/line-footer.gif style="margin: 5px 0px 10px 0px;">
         <?php echo $footer;?> </td>
-</tr>
-    <?php //echo $footer;?>
+</tr>    

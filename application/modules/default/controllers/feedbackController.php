@@ -5,11 +5,7 @@
 
 Class feedbackController Extends defaultController {
 
-    public function indexAction() {
-        $this->view->setTitle("Nhom Xingfa, Cua so Xingfa, xingfawindow, xingfawindow.vn");
-        $this->view->setDescription("Nhom Xingfa, Cua so Xingfa, xingfawindow, xingfawindow.vn");
-        $this->view->setKeywords("Nhom Xingfa, Cua so Xingfa, xingfawindow, xingfawindow.vn");
-        
+    public function indexAction() {       
         $this->view->show('index');
         /* load layout template */        
     }

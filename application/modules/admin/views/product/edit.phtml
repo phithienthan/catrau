@@ -1,12 +1,12 @@
 <?php
 if ($productInfo == null) {
-    $pageTitle = 'Thêm sản phẩm';
+    $pageTitle = 'Thêm ảnh';
     $productInfo['priority'] = '';
     $productInfo['pro_detail'] = '';    
     $productInfo['pro_image'] = '';
     $productInfo['category_id'] = 0;
 } else {
-    $pageTitle = 'Sửa sản phẩm';
+    $pageTitle = 'Sửa ảnh';
 }
 ?>
 <form id="edit_form" action="/admin/product/post/id/<?php echo $id ?>" method="post" enctype="multipart/form-data">
