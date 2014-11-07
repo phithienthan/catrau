@@ -1,10 +1,10 @@
-<?php $this->block("unslider") ?>
 <section class="main_content">
-    <section class="content">
-        <section class="column_left fl">
+    <section class="content_detail">
+        <section class="sec_content fl">
             <header>
                 Liên hệ
-            </header>     
+            </header>   
+            <div class="news_item">
             <form id="edit_form" action="/default/feedback/post" method="post">                
             <section class="fl cateL">
                 <section class="lblFeedback fl">Họ tên: </section>
@@ -27,12 +27,10 @@
                     <textarea class="input-text" title="Nội dung" value="" name="content" id="content"></textarea>
                 </section>                    
                 <section class="clr"></section>
-                <section class="lblFeedback fl">&nbsp;</section><section class="fl lineSpace"><input type="submit" title="Gửi" id="cmd_submit" value="Gửi" /></section>            
+                <section class="lblFeedback fl">&nbsp;</section><section class="fl lineSpace"><input type="submit" title="Gửi" id="cmd_submit" value="Gửi" /></section>                         <br />
             </section>
             </form>
-        </section>        
-        <section class="sidebar fl">
-            <?php echo $this->block('category'); ?>
-        </section>           
+            </div>
+        </section>                  
     </section>
 </section>

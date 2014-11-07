@@ -10,12 +10,11 @@
                 <img border="0" src="<?php echo SKIN_PATH ?>default/images/icon-menuT.gif" width="12" height="12" align=absmiddle><span style="margin-left:8px;">TIN TỨC</span>
                 </td>
             </tr>
+            <?php foreach ($articles as $article) { ?>
             <tr>
-                <td height=30 class="CSSmenu"><a href="#">Cá Tràu tiến vua</a></td>
+                <td height=30 class="CSSmenu"><a href="/<?php echo $article['url_key']; ?>"><?php echo $article['title']; ?></a></td>
             </tr>
-            <tr>
-                <td height=30 class="CSSmenu"><a href="#">Cá Tràu tiến vua</a></td>
-            </tr>
+            <?php } ?>
             <tr>
                 <td height=1 bgcolor="#505050"></td>
             </tr>

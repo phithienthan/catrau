@@ -9,14 +9,12 @@
         public function init() {
             $requestPath = $this->request->getRequestPath();
             $categoryModel = $this->model->get('category');
-            $parentCategorys = $categoryModel->getCategoryByParentId(0);
+            $parentCategorys = $categoryModel->getByParentIdAndPost(0,1);
             $menuHtml = "";
-            if (count($parentCategorys) > 0) {
-                $menuHtml = "<table border=\"0\" cellpadding=0 cellspacing=0 width=\"100%\" height=100%><tr class=\"menu\">";
+            if (count($parentCategorys) > 0) {                
                 foreach ($parentCategorys as $parentCategory) {
                     $menuHtml .= "<td><a href=\"/" . $parentCategory['url_key'] . "/\">" . $parentCategory['title'] . "</a></td><td width=1><img src=" . SKIN_PATH . "default/images/bg-menu-line.gif></td>";
-                }
-                $menuHtml .= "</tr></table>";
+                }                
             }
             $this->data['menuHtml'] = $menuHtml;
             //hotline

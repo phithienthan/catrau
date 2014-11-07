@@ -6,9 +6,9 @@
 Class indexController Extends defaultController {
 
     public function indexAction() {               
-        $productModel = $this->model->get('product');
-        $products = $productModel->getHotProducts(6,1);                
-        $this->view->data['products'] = $products;
+        $articleModel = $this->model->get('article');
+        $articles = $articleModel->getByChannel(61,1);                
+        $this->view->data['articles'] = $articles;
         
         $this->view->show('index');
         /* load layout template */        

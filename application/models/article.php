@@ -62,6 +62,16 @@ Class articleModel Extends baseModel {
         $result = $this->_mysql->execute_query_to_array($qr);
         return $result;
     }
+
+    public function getLatestArticles($pageSize,$status=NULL) {     
+        if($status==NULL){
+            $qr = 'SELECT * FROM ' . $this->_table.'  ORDER BY id DESC LIMIT 0,'. $pageSize;        
+        } else {
+            $qr = 'SELECT * FROM ' . $this->_table.' WHERE status ='. $status.' ORDER BY id DESC LIMIT 0,'. $pageSize;
+        }
+        $result = $this->_mysql->execute_query_to_array($qr);
+        return $result;
+    }
     
     public function getAllArticlesByCategoryId($categoryId,$page,$pageSize) {                
         $page = $this->_mysql->quote($page);        

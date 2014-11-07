@@ -1,9 +1,3 @@
-<!--Banner-->
-<tr><td height=236>
-    <img src="<?php echo SKIN_PATH ?>default/images/banner.jpg">
-    <?php //$this->block("unslider") ?>
-</td></tr>
-<!--End Banner-->
 <tr><td height=5></td></tr>
 <!--menu ngang-->
 <tr>
@@ -12,7 +6,14 @@
             <tr>
                 <td background="<?php echo SKIN_PATH ?>default/images/bg-menu-left.gif" width=6></td>
                 <td background="<?php echo SKIN_PATH ?>default/images/bg-menu.gif" width=639>
-                    <?php echo $menuHtml;?>
+                    <table border="0" cellpadding=0 cellspacing=0 width="100%" height=100%>
+                        <tr class="menu">
+                            <td>
+                                <a href="/">Trang chủ</a></td>
+                            <td width=1><img src="<?php echo SKIN_PATH . "default/images/bg-menu-line.gif"?>"></td>                            
+                            <?php echo $menuHtml;?>
+                        </tr>
+                    </table>
                 </td>
                 <td background="<?php echo SKIN_PATH ?>default/images/bg-menu-right.gif" width=6></td>
             </tr>
