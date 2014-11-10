@@ -12,7 +12,7 @@ define('SKIN_PATH', '/skin/');
 define('AVATAR_PATH', '/uploads/image/avatar/');
 define('AVATAR_RESIZE_PATH', '/uploads/image/avatar/resize/');
 
-define('MOBILE_URL', 'http://xingfawindow.vn/');
+define('MOBILE_URL', 'http://catrautienvua.com.vn/');
 
 define('NEWS_LIST_URL_SUFFIX', '.html');
 define('NEWS_VIEW_URL_SUFFIX', '.php');
