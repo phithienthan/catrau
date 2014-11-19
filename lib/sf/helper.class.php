@@ -118,8 +118,7 @@ class Helper {
         return $pageURL;
     }
 
-    function WriteLog($fileName, $data, $breakLine = true, $addTime = true) {
-		/*
+    function WriteLog($fileName, $data, $breakLine = true, $addTime = true) {	
         $fp = fopen('logs/' . $fileName, 'a');
         if ($fp) {
             if ($breakLine) {
@@ -136,8 +135,8 @@ class Helper {
             }
             fwrite($fp, $line);
             fclose($fp);
-        }
-		*/
+        }	
+		
     }
     /* 
      * input '31/01/2013' 

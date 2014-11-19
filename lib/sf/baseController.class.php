@@ -16,7 +16,7 @@ Abstract Class baseController {
     function __construct($registry) {
         $this->registry = $registry;
         $this->model = baseModel::getInstance();
-        $this->view = baseView::getInstance();        
+        $this->view = baseView::getInstance();
         $this->request = request::getInstance();
         
         $this->init();
@@ -31,7 +31,7 @@ Abstract Class baseController {
     
     public function redirect($url) {
         header("Location: $url");
-    }
+    }        
 
 }
 
