@@ -4,43 +4,48 @@
  * @author quyetnd
  */
 
-Class productController Extends adminController {
+Class articleController Extends adminController {
 
     public function indexAction() {
         $page = $this->request->queryString("page");
         if(empty($page)){
             $page = "1";
         }                 
-        $totalRecord = $this->model->get('product')->getTotalRecord();
+        $totalRecord = $this->model->get('article')->getTotalRecord();
         $this->view->data['page'] = $page;
         $this->view->data['totalRecord'] = $totalRecord;
         $this->view->data['pageSize'] = 10;
-        $this->view->data['products'] = $this->model->get('product')->getProducts($page,$this->view->data['pageSize']);
+        $this->view->data['articles'] = $this->model->get('article')->getArticles($page,$this->view->data['pageSize']);
 
-        $grid = new Grid($this->view->data['products']);
+        $grid = new Grid($this->view->data['articles']);
         $grid->setModule('admin');
-        $grid->setController('product');
-        $grid->setId('pro_id');
+        $grid->setController('article');
         $grid->setTotalRecord($totalRecord); 
         $grid->setPageSize($this->view->data['pageSize']);     
         $grid->setPage($page);  
         $grid->addColumn(array(
-            'header'    => 'Tên sản phẩm',
+            'header'    => 'Tiêu đề bài viết',
             'align'     =>'left',
             'width'     => '',
-            'index'     => 'pro_name'
+            'index'     => 'title'
         ));    
         $grid->addColumn(array(
-            'header'    => 'Url key',
+            'header'    => 'URL key',
             'align'     =>'left',
             'width'     => '',
             'index'     => 'url_key'
         ));  
         $grid->addColumn(array(
-        'header'    => 'Product category',
+        'header'    => 'Trạng thái',
         'align'     => 'center',
         'width'     => '140',
-        'index'     => 'category_id'
+        'index'     => 'status'
+        ));          
+        $grid->addColumn(array(
+        'header'    => 'Xuất bản',
+        'align'     => 'center',
+        'width'     => '140',
+        'index'     => 'public_time'
         ));  
         $grid->addColumn(array(
         'header'    => 'Thứ tự',
@@ -63,15 +68,15 @@ Class productController Extends adminController {
         } else {
             $key = trim($key);
         }
-        $totalRecord = $this->model->get('product')->getTotalResult($key);        
+        $totalRecord = $this->model->get('article')->getTotalResult($key);        
         $this->view->data['page'] = $page;
         $this->view->data['totalRecord'] = $totalRecord;
         $this->view->data['pageSize'] = 10;
-        $this->view->data['products'] = $this->model->get('product')->getSearchResults($key,$page,$this->view->data['pageSize']);        
+        $this->view->data['articles'] = $this->model->get('article')->getSearchResults($key,$page,$this->view->data['pageSize']);        
 
-        $grid = new Grid($this->view->data['products']);
+        $grid = new Grid($this->view->data['articles']);
         $grid->setModule('admin');
-        $grid->setController('product');
+        $grid->setController('article');
         $grid->setTotalRecord($totalRecord); 
         $grid->setPageSize($this->view->data['pageSize']);     
         $grid->setPage($page);  
@@ -87,6 +92,12 @@ Class productController Extends adminController {
             'width'     => '',
             'index'     => 'url_key'
         ));  
+        $grid->addColumn(array(
+        'header'    => 'Trạng thái',
+        'align'     => 'center',
+        'width'     => '140',
+        'index'     => 'status'
+        ));          
         $grid->addColumn(array(
         'header'    => 'Xuất bản',
         'align'     => 'center',
@@ -106,17 +117,17 @@ Class productController Extends adminController {
     public function editAction() {
         $id = $this->request->queryString("id");
         $categoryModel = $this->model->get('category');
-        $productModel = $this->model->get('product');
+        $articleModel = $this->model->get('article');
         $this->view->data['id'] = $id;
-        $this->view->data['productInfo'] = $productModel->getProductInfo($id);
-        $this->view->data['categorys'] = $this->getAllCategory(0);        
+        $this->view->data['articleInfo'] = $articleModel->getArticleInfo($id);
+        $this->view->data['categorys'] = $this->getAllCategory(0);
         $this->view->show('edit');
     }
-
+    
     public function getAllCategory($root_id){
         $categorys = array();
         $categoryModel = $this->model->get('category');
-        $parentCategory = $categoryModel->getParentProCate($root_id);
+        $parentCategory = $categoryModel->getParentArtCate($root_id);
         $i = 0;
         foreach($parentCategory as $category){            
             $categorys[$i++] = $category;            
@@ -134,27 +145,25 @@ Class productController Extends adminController {
     
     public function postAction() {        
         $params = $this->request->getParams();
-        $content = $params['pro_detail'];
-        
+        $content = $params['detail'];
         $content = html_entity_decode($content, ENT_NOQUOTES, 'UTF-8');
         $match = array();
         $split = preg_match('/<h1.*class="pTitle".*<\/h1>/siU', $content, $match);
         if ($split) {
             $title = preg_replace('/<h1.*class="pTitle".*>/siU', '', $match[0]);
-            $params['pro_name'] = substr($title, 0, -5);
+            $params['title'] = substr($title, 0, -5);
         }
 
         $split = preg_match('/<h2.*class="pHead".*<\/h2>/siU', $content, $match);
         if ($split) {
-            $pro_des = preg_replace('/<h2.*class="pHead".*>/siU', '', $match[0]);
-            $params['pro_des'] = substr($pro_des, 0, -5);
+            $description = preg_replace('/<h2.*class="pHead".*>/siU', '', $match[0]);
+            $params['description'] = substr($description, 0, -5);
         }
 
         /* upload image */  
         $avatarUrl = "";
         $newName = "";
         //var_dump($_FILES);exit;
-        
         if($_FILES["file"]["name"] != ""){
             $file_exts = array("jpg", "bmp", "jpeg", "gif", "png");
             $upload_exts = end(explode(".", $_FILES["file"]["name"]));
@@ -171,7 +180,7 @@ Class productController Extends adminController {
                     echo "Return Code: " . $_FILES["file"]["error"] . "<br>";die;
                 } else {                
                     // Enter your path to upload file here       
-                    $avatarUrl = __SITE_PATH.AVATAR_PATH;
+                    $avatarUrl = ROOT.AVATAR_PATH;
                     if (file_exists($avatarUrl.$_FILES["file"]["name"]))
                     {
                         $newName = time().$_FILES["file"]["name"];
@@ -188,12 +197,12 @@ Class productController Extends adminController {
             } else {
                 echo "<div class='error'>Invalid file</div>";die;
             }
-            $params['pro_image'] = $newName;            
+            $params['avatar_url'] = $newName;
             // *** 1) Initialise / load image
             $resizeObj = new resize($avatarUrl);            
             // *** 2) Resize image (options: exact, portrait, landscape, auto, crop)
             $resizeObj -> resizeImage(180, 110, 'crop');
-            $savePath = __SITE_PATH.AVATAR_RESIZE_PATH;
+            $savePath = ROOT.AVATAR_RESIZE_PATH;
             // *** 3) Save image
             $resizeObj -> saveImage($savePath."180x110/".$newName, 100);            
             // *** 2) Resize image (options: exact, portrait, landscape, auto, crop)
@@ -202,12 +211,15 @@ Class productController Extends adminController {
             $resizeObj -> saveImage($savePath."280x200/".$newName, 100);            
         }
         /* end upload image */        
-        $params["url_key"] = $params['pro_name'];
+        $params["url_key"] = $params['title'];
         $id = $this->request->queryString("id");
-        $productModel = $this->model->get('product');
+        $articleModel = $this->model->get('article');
         $rewriteModel = $this->model->get('rewrite');        
         
-        $params["url_key"] = Helper::getInstance()->urlKey($params["url_key"], $id, $productModel->getTableName());        
+        $params["url_key"] = Helper::getInstance()->urlKey($params["url_key"], $id, $articleModel->getTableName());        
+        //$string = htmlentities($params["url_key"], null, 'utf-8');
+        //$string = str_replace("&nbsp;", "", $string);
+        //var_dump($params["url_key"]);exit;
         $i = 1;
         $duplicate = Helper::getInstance()->rewriteDuplicate("/".$params["url_key"], $id, $rewriteModel->getTableName(),"request_path");
         while ($duplicate) {
@@ -217,46 +229,55 @@ Class productController Extends adminController {
         $rewriteParams = array();
         $rewriteParams['request_path'] = "/".$params['url_key'];    
 
-        $rewriteParams['target_path'] = '/default/product/viewdetail/id/';
-        //$publicTime = $params['public_time'];
-        //$publicTime = Helper::getInstance()->convertDate($params['public_time']);        
-        //$params['public_time'] = $publicTime. " ".$params['sltH'].":".$params['sltM'].":00";        
-        //unset($params['sltH']);
-        //unset($params['sltM']);
-        unset($params['file']);
+        $rewriteParams['target_path'] = '/default/article/viewdetail/id/';
+        $publicTime = $params['public_time'];
+        $publicTime = Helper::getInstance()->convertDate($params['public_time']);        
+        $params['public_time'] = $publicTime. " ".$params['sltH'].":".$params['sltM'].":00";        
+        unset($params['sltH']);
+        unset($params['sltM']);
         if ($id == "") {
-            $productModel->addNew($params);
-            //var_dump($params);exit;
-            $productInfo = $productModel->getInfoByKey($params["url_key"]);
-            $rewriteParams['target_path'] .= $productInfo['pro_id'];
-            
+            $articleModel->addNewArticle($params);
+            $articleInfo = $articleModel->getArticleInfoByKey($params["url_key"]);
+            $rewriteParams['target_path'] .= $articleInfo['id'];
             $rewriteModel->addNewRewrite($rewriteParams);            
         } else {
-            $productInfo = $productModel->getProductInfo($id);            
-            if($productInfo['url_key'] != $params['url_key']){
-                $rewriteInfo = $rewriteModel->getRewriteInfo("/".$productInfo['url_key']);
+            $articleInfo = $articleModel->getArticleInfo($id);            
+            if($articleInfo['url_key'] != $params['url_key']){
+                $rewriteInfo = $rewriteModel->getRewriteInfo("/".$articleInfo['url_key']);
                 $rewriteParams['target_path'] .= $id;
                 $rewriteModel->updateRewrite($rewriteInfo['id'],$rewriteParams);
             }            
-            $productModel->update($id, $params);
+            $articleModel->updateArticle($id, $params);
         }
-        $this->redirect("/admin/product/list");
+        $this->redirect("/admin/article/list");
     }
 
     public function deleteAction() {
         $id = $this->request->queryString("id");
-        $productModel = $this->model->get('product');
-        $productModel->delete($id);
-        $this->redirect("/admin/product/list");
+        $articleModel = $this->model->get('article');
+        /* del rewrite before */
+        $rewriteModel = $this->model->get('rewrite');
+        $articleInfo = $articleModel->getArticleInfo($id);
+        $rewriteInfo = $rewriteModel->getRewriteInfo("/".$articleInfo['url_key']);
+        $rewriteModel->deleteRewrite($rewriteInfo['id']); 
+        /* end del rewrite */              
+        $articleModel->deleteArticle($id);
+        $this->redirect("/admin/article/list");
     }
 
     public function delAllAction() {
         $para = $this->request->getParams();
-        $productModel = $this->model->get('product');
+        $articleModel = $this->model->get('article');
         foreach ($para['chkItem'] as $id) {
-            $productModel->delete($id);
+            /* del rewrite before */
+            $rewriteModel = $this->model->get('rewrite');
+            $articleInfo = $articleModel->getArticleInfo($id);
+            $rewriteInfo = $rewriteModel->getRewriteInfo("/".$articleInfo['url_key']);
+            $rewriteModel->deleteRewrite($rewriteInfo['id']); 
+            /* end del rewrite */                
+            $articleModel->deleteArticle($id);
         }
-        $this->redirect("/admin/product/list");
+        $this->redirect("/admin/article/list");
     }
 
 }

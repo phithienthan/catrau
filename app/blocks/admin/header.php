@@ -6,7 +6,7 @@
 class admin_block_header Extends baseBlock{    
     public function init(){
         $doc = new DOMDocument();
-        $doc->load(APPLICATION_PATH . '/etc/admin_menu.xml');
+        $doc->load(CONFIG . 'admin_menu.xml');
         $menus = $doc->getElementsByTagName("items");
         $menuHtml = "";
         if(count($menus)>0){

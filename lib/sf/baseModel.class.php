@@ -27,7 +27,7 @@ class baseModel {
     }
 
     public function get($name) {
-        $file = APPLICATION_PATH . '/models/' . $name . ".php";
+        $file = APP_PATH . '/models/' . $name . ".php";
         if (file_exists($file)) {
             require_once($file);
             $class = str_replace("model", "", strtolower($name)) . "Model";

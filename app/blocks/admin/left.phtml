@@ -1,7 +1,7 @@
 <div class="menu_left">  
     <?php
     $doc = new DOMDocument();
-    $doc->load(APPLICATION_PATH . '/etc/admin_menu.xml');
+    $doc->load(APP_PATH . '/etc/admin_menu.xml');
     $menus = $doc->getElementsByTagName("items");
     foreach ($menus as $menu) {
         $title = $menu->getElementsByTagName("title");

@@ -26,7 +26,7 @@ Abstract Class baseBlock {
         foreach ($this->data as $key => $value) {
             $$key = $value;            
         }        
-        $path = APPLICATION_PATH."/blocks/$this->module/$this->name.phtml";
+        $path = APP_PATH."/blocks/$this->module/$this->name.phtml";
         if (file_exists($path)) {        
             include $path;
         }        

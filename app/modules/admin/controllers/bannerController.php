@@ -77,7 +77,7 @@ Class bannerController Extends adminController {
                     echo "Return Code: " . $_FILES["file"]["error"] . "<br>";die;
                 } else {                
                     // Enter your path to upload file here       
-                    $avatarUrl = __SITE_PATH.AVATAR_PATH;
+                    $avatarUrl = ROOT.AVATAR_PATH;
                     if (file_exists($avatarUrl.$_FILES["file"]["name"]))
                     {
                         $newName = time().$_FILES["file"]["name"];
@@ -99,7 +99,7 @@ Class bannerController Extends adminController {
             //$resizeObj = new resize($avatarUrl);            
             // *** 2) Resize image (options: exact, portrait, landscape, auto, crop)
             //$resizeObj -> resizeImage(1900, 300, 'crop');
-            //$savePath = __SITE_PATH.AVATAR_RESIZE_PATH;
+            //$savePath = ROOT.AVATAR_RESIZE_PATH;
             // *** 3) Save image
             //$resizeObj -> saveImage($savePath."1900x300/".$newName, 100);            
             // *** 2) Resize image (options: exact, portrait, landscape, auto, crop)

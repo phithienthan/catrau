@@ -60,7 +60,7 @@ Class baseView {
     }
 
     public function block($name) {
-        $path = APPLICATION_PATH . "/blocks/" . $this->module . "/" . $name . ".php";
+        $path = APP_PATH . "/blocks/" . $this->module . "/" . $name . ".php";
         if (file_exists($path)) {
             include $path;
             $class = strtolower($this->module . "_block_" . $name);
@@ -69,7 +69,7 @@ Class baseView {
     }
 
     public function set_layout($layout_name) {
-        $this->layout = APPLICATION_PATH . "/layouts/$layout_name.phtml";
+        $this->layout = APP_PATH . "/layouts/$layout_name.phtml";
     }
 
     public function content() {
@@ -80,11 +80,11 @@ Class baseView {
     }
 
     function show($name) {
-        $path = APPLICATION_PATH . '/modules/' . $this->module . '/views' . '/' . $this->controller . '/' . $name . '.phtml';
+        $path = APP_PATH . '/modules/' . $this->module . '/views' . '/' . $this->controller . '/' . $name . '.phtml';
         if (file_exists($path) == false) {
             $this->module = 'error';
             $this->controller = 'error404';
-            $path = APPLICATION_PATH . '/modules/' . $this->module . '/views' . '/' . $this->controller . '/error404.phtml';
+            $path = APP_PATH . '/modules/' . $this->module . '/views' . '/' . $this->controller . '/error404.phtml';
             if (file_exists($path) == false) {
                 throw new Exception('Template not found in ' . $path);
                 return false;

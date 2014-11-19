@@ -66,7 +66,7 @@ class mvcCore {
         if (empty($this->action)) {
             $this->action = 'index';
         }
-        $file = APPLICATION_PATH . '/modules/' . $this->module .'/controllers/'.$this->controller . 'Controller.php';                
+        $file = APP_PATH . '/modules/' . $this->module .'/controllers/'.$this->controller . 'Controller.php';                
 
     }
     public static function getInstance() {
