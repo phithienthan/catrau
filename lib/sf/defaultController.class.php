@@ -19,8 +19,7 @@ Class defaultController Extends baseController {
         $params["time"] = date("Y-m-d H:i:s", time());
         $params["browser"] = $_SERVER['HTTP_USER_AGENT'];
         $params["url"] = $curUrl;
-        /* write 5 times because revolslider jquery */
-        Helper::getInstance()->WriteLog("log_" . date("Ymd", time()) . ".txt", $_SERVER['REMOTE_ADDR']);
+        
         try{            
             $staticModel->addNewPageView($params);
         } catch(Exception $ex) {
