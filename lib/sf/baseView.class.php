@@ -1,10 +1,10 @@
 <?php
 
-/*
+/**
  * @author quyetnd
  */
-
-Class baseView {
+Class baseView
+{
     /*
      * @Variables array
      * @access public
@@ -30,14 +30,16 @@ Class baseView {
      * @return void
      *
      */
-    function __construct() {
+    function __construct()
+    {
         $mvcCore = mvcCore::getInstance();
         $this->module = $mvcCore->module;
         $this->controller = $mvcCore->controller;
         $this->action = $mvcCore->action;
     }
 
-    public static function getInstance() {
+    public static function getInstance()
+    {
         if (!self::$instance) {
             self::$instance = new baseView();
         }
@@ -55,31 +57,36 @@ Class baseView {
      * @return void
      *
      */
-    public function __set($index, $value) {
+    public function __set($index, $value)
+    {
         $this->vars[$index] = $value;
     }
 
-    public function block($name) {
+    public function block($name)
+    {
         $path = APP_PATH . "/blocks/" . $this->module . "/" . $name . ".php";
         if (file_exists($path)) {
             include $path;
             $class = strtolower($this->module . "_block_" . $name);
-            $block = new $class($name);            
+            $block = new $class($name);
         }
     }
 
-    public function set_layout($layout_name) {
+    public function set_layout($layout_name)
+    {
         $this->layout = APP_PATH . "/layouts/$layout_name.phtml";
     }
 
-    public function content() {
+    public function content()
+    {
         foreach ($this->data as $key => $value) {
             $$key = $value;
         }
         include $this->content;
     }
 
-    function show($name) {
+    function show($name)
+    {
         $path = APP_PATH . '/modules/' . $this->module . '/views' . '/' . $this->controller . '/' . $name . '.phtml';
         if (file_exists($path) == false) {
             $this->module = 'error';
@@ -96,27 +103,33 @@ Class baseView {
 
     /* SEO */
 
-    public function setTitle($title) {
+    public function setTitle($title)
+    {
         $this->title = $title;
     }
 
-    public function getTitle() {
+    public function getTitle()
+    {
         return $this->title;
     }
 
-    public function setDescription($des) {
+    public function setDescription($des)
+    {
         $this->description = $des;
     }
 
-    public function getDescription() {
+    public function getDescription()
+    {
         return $this->description;
     }
 
-    public function setKeywords($key) {
+    public function setKeywords($key)
+    {
         $this->keywords = $key;
     }
 
-    public function getKeywords() {
+    public function getKeywords()
+    {
         return $this->keywords;
     }
 

@@ -1,24 +1,26 @@
 <?php
-/*
+
+/**
  * @author quyetnd
  */
-
-Abstract Class baseController {
+Abstract Class baseController
+{
     /*
      * @registry object
      */
 
-    protected $registry;   
+    protected $registry;
     protected $model;
     protected $view;
-    protected $request;    
+    protected $request;
 
-    function __construct($registry) {
+    function __construct($registry)
+    {
         $this->registry = $registry;
         $this->model = baseModel::getInstance();
         $this->view = baseView::getInstance();
         $this->request = request::getInstance();
-        
+
         $this->init();
     }
 
@@ -28,10 +30,11 @@ Abstract Class baseController {
      * @all controllers must contain an index method
      */
     abstract function indexAction();
-    
-    public function redirect($url) {
+
+    public function redirect($url)
+    {
         header("Location: $url");
-    }        
+    }
 
 }
 

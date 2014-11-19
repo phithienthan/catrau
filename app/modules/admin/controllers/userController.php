@@ -1,12 +1,14 @@
 <?php
 
-/*
+/**
  * @author quyetnd
  */
 
-Class userController Extends adminController {
+Class userController Extends adminController
+{
 
-    public function indexAction() {
+    public function indexAction()
+    {
         $page = $this->request->queryString("page");
         if (empty($page)) {
             $page = "1";
@@ -51,7 +53,8 @@ Class userController Extends adminController {
         $this->view->show('index');
     }
 
-    public function editAction() {
+    public function editAction()
+    {
         $id = $this->request->queryString("id");
         $userModel = $this->model->get('user');
         $this->view->data['id'] = $id;
@@ -60,7 +63,8 @@ Class userController Extends adminController {
         $this->view->show('edit');
     }
 
-    public function postAction() {
+    public function postAction()
+    {
         $params = $this->request->getParams();
         $id = $this->request->queryString("id");
         $userModel = $this->model->get('user');
@@ -77,14 +81,16 @@ Class userController Extends adminController {
         $this->redirect("/admin/user/index");
     }
 
-    public function deleteAction() {
+    public function deleteAction()
+    {
         $id = $this->request->queryString("id");
         $model = $this->model->get('user');
         $model->deleteUser($id);
         $this->redirect("/admin/user/index");
     }
 
-    public function delAllAction() {
+    public function delAllAction()
+    {
         $para = $this->request->getParams();
         $model = $this->model->get('user');
         foreach ($para['chkItem'] as $id) {

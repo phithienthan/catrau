@@ -1,10 +1,10 @@
 <?php
 
-/*
+/**
  * @author quyetnd
  */
-
-class router {
+class router
+{
     /*
      * @the registry
      */
@@ -22,7 +22,8 @@ class router {
     public $action;
     protected $model;
 
-    function __construct($registry) {
+    function __construct($registry)
+    {
         $this->registry = $registry;
     }
 
@@ -35,7 +36,8 @@ class router {
      * @return void
      *
      */
-    function setPath($path) {
+    function setPath($path)
+    {
 
         /*         * * check if path i sa directory ** */
         if (is_dir($path) == false) {
@@ -54,7 +56,8 @@ class router {
      * @return void
      *
      */
-    public function loader() {
+    public function loader()
+    {
         /*         * * check the route ** */
         $this->getController();
 
@@ -98,7 +101,8 @@ class router {
      * @return void
      *
      */
-    private function getController() {
+    private function getController()
+    {
         $mvcCore = mvcCore::getInstance();
         $this->module = $mvcCore->module;
         $this->controller = $mvcCore->controller;

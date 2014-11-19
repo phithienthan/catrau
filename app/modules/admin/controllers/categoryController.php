@@ -1,12 +1,14 @@
 <?php
 
-/*
+/**
  * @author quyetnd
  */
 
-Class categoryController Extends adminController {
+Class categoryController Extends adminController
+{
 
-    public function indexAction() {
+    public function indexAction()
+    {
         $page = $this->request->queryString("page");
         if (empty($page)) {
             $page = "1";
@@ -51,7 +53,8 @@ Class categoryController Extends adminController {
         $this->view->show('index');
     }
 
-    public function editAction() {
+    public function editAction()
+    {
         $id = $this->request->queryString("id");
         $categoryModel = $this->model->get('category');
         $categoryTypeModel = $this->model->get('category_type');
@@ -67,7 +70,8 @@ Class categoryController Extends adminController {
         $this->view->show('edit');
     }
 
-    public function getAllCategory($root_id) {
+    public function getAllCategory($root_id)
+    {
         $categorys = array();
         $categoryModel = $this->model->get('category');
         $parentCategory = $categoryModel->getCategoryByParentId($root_id);
@@ -85,7 +89,8 @@ Class categoryController Extends adminController {
         return $categorys;
     }
 
-    public function postAction() {
+    public function postAction()
+    {
         $params = $this->request->getParams();
         if ($params["url_key"] == "") {
             $params["url_key"] = $params["title"];
@@ -168,7 +173,8 @@ Class categoryController Extends adminController {
         $this->redirect("/admin/category/list");
     }
 
-    public function deleteAction() {
+    public function deleteAction()
+    {
         $id = $this->request->queryString("id");
         $categoryModel = $this->model->get('category');
         /* del category position before */
@@ -188,7 +194,8 @@ Class categoryController Extends adminController {
         $this->redirect("/admin/category/list");
     }
 
-    public function delAllAction() {
+    public function delAllAction()
+    {
         $para = $this->request->getParams();
         $categoryModel = $this->model->get('category');
         foreach ($para['chkItem'] as $id) {

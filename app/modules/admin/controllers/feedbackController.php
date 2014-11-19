@@ -1,12 +1,14 @@
 <?php
 
-/*
+/**
  * @author quyetnd
  */
 
-Class feedbackController Extends adminController {
+Class feedbackController Extends adminController
+{
 
-    public function indexAction() {
+    public function indexAction()
+    {
         $page = $this->request->queryString("page");
         if (empty($page)) {
             $page = "1";
@@ -51,45 +53,50 @@ Class feedbackController Extends adminController {
         $this->view->show('index');
     }
 
-    public function editAction() {
+    public function editAction()
+    {
         $id = $this->request->queryString("id");
         $model = $this->model->get('feedback');
         $this->view->data['feedbackInfo'] = $model->getInfo($id);
         $this->view->show('edit');
     }
 
-    public function postAction() {
+    public function postAction()
+    {
         $params = $this->request->getParams();
         $id = 1;
         $contactModel = $this->model->get('contact');
-        if ($id == "") {            
+        if ($id == "") {
             $contactModel->addNewContact($params);
-        } else {            
+        } else {
             $contactModel->updateContact($id, $params);
         }
         $this->redirect("/admin/contact/edit");
     }
-    
-    public function feedbackAction() {
+
+    public function feedbackAction()
+    {
         $params = $this->request->getParams();
         $id = 1;
         $contactModel = $this->model->get('contact');
-        if ($id == "") {            
+        if ($id == "") {
             $contactModel->addNewContact($params);
-        } else {            
+        } else {
             $contactModel->updateContact($id, $params);
         }
         $this->redirect("/admin/contact/edit");
     }
-    
-    public function deleteAction() {
+
+    public function deleteAction()
+    {
         $id = $this->request->queryString("id");
         $model = $this->model->get('user');
         $model->deleteUser($id);
         $this->redirect("/admin/user/index");
     }
 
-    public function delAllAction() {
+    public function delAllAction()
+    {
         $para = $this->request->getParams();
         $model = $this->model->get('user');
         foreach ($para['chkItem'] as $id) {

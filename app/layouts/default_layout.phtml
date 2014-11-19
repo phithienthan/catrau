@@ -1,14 +1,14 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
-        <title><?php echo $this->getTitle();?></title>
-        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <meta content="<?php echo $this->getDescription();?>" name="description">
-        <meta content="<?php echo $this->getKeywords();?>" name="keywords">
-        <meta content="INDEX,FOLLOW" name="robots">
-        
-        <script type="text/javascript" src="<?php echo SKIN_PATH?>default/js/jquery-1.10.2.js"></script>            
-        
+        <title><?php echo $this->getTitle(); ?></title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+        <meta content="<?php echo $this->getDescription(); ?>" name="description" />
+        <meta content="<?php echo $this->getKeywords(); ?>" name="keywords" />
+        <meta content="INDEX,FOLLOW" name="robots" />
+
+        <script type="text/javascript" src="<?php echo SKIN_PATH ?>default/js/jquery-1.10.2.js"></script>            
+
         <link href="<?php echo SKIN_PATH; ?>default/css/styles.css" rel="stylesheet" type="text/css" />        
         <link rel="shortcut icon" href="<?php echo SKIN_PATH; ?>default/images/favicon.ico" />
     </head>
@@ -28,14 +28,14 @@
                                     <tr><td height=8></td></tr>
                                     <!--Banner-->
                                     <tr><td style="text-align: center">
-                                        <?php $this->block("revolslider") ?>
-                                    </td></tr>
+                                            <?php $this->block("revolslider") ?>
+                                        </td></tr>
                                     <!--End Banner-->                                    
                                     <?php $this->block("header") ?>
                                     <!--Content-->
                                     <tr><td valign=top id="boder">                                       
-                                        <?php $this->content() ?>  
-                                    </td></tr>                                    
+                                            <?php $this->content() ?>  
+                                        </td></tr>                                    
                                     <!--End Content-->
                                     <tr><td height=10></td></tr>
                                 </table>

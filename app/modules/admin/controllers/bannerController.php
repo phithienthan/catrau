@@ -1,12 +1,14 @@
 <?php
 
-/*
+/**
  * @author quyetnd
  */
 
-Class bannerController Extends adminController {
+Class bannerController Extends adminController
+{
 
-    public function indexAction() {
+    public function indexAction()
+    {
         $page = $this->request->queryString("page");
         if (empty($page)) {
             $page = "1";
@@ -41,12 +43,13 @@ Class bannerController Extends adminController {
             'width' => '',
             'index' => 'link'
         ));
-        
+
         $this->view->data['grid'] = $grid;
         $this->view->show('index');
     }
 
-    public function editAction() {
+    public function editAction()
+    {
         $id = $this->request->queryString("id");
         $bannerModel = $this->model->get('banner');
         $this->view->data['id'] = $id;
@@ -55,44 +58,37 @@ Class bannerController Extends adminController {
         $this->view->show('edit');
     }
 
-    public function postAction() {
+    public function postAction()
+    {
         $params = $this->request->getParams();
         //var_dump($params);exit;
-        /* upload image */  
+        /* upload image */
         $avatarUrl = "";
         $newName = "";
-        if($_FILES["file"]["name"] != ""){
+        if ($_FILES["file"]["name"] != "") {
             $file_exts = array("jpg", "bmp", "jpeg", "gif", "png");
             $upload_exts = end(explode(".", $_FILES["file"]["name"]));
-            if ((($_FILES["file"]["type"] == "image/gif")
-            || ($_FILES["file"]["type"] == "image/jpeg")
-            || ($_FILES["file"]["type"] == "image/png")
-            || ($_FILES["file"]["type"] == "image/pjpeg"))
-            && ($_FILES["file"]["size"] < 2000000)
-            && in_array($upload_exts, $file_exts))
-            {
+            if ((($_FILES["file"]["type"] == "image/gif") || ($_FILES["file"]["type"] == "image/jpeg") || ($_FILES["file"]["type"] == "image/png") || ($_FILES["file"]["type"] == "image/pjpeg")) && ($_FILES["file"]["size"] < 2000000) && in_array($upload_exts, $file_exts)) {
 
-                if ($_FILES["file"]["error"] > 0)
-                {
-                    echo "Return Code: " . $_FILES["file"]["error"] . "<br>";die;
-                } else {                
+                if ($_FILES["file"]["error"] > 0) {
+                    echo "Return Code: " . $_FILES["file"]["error"] . "<br>";
+                    die;
+                } else {
                     // Enter your path to upload file here       
-                    $avatarUrl = ROOT.AVATAR_PATH;
-                    if (file_exists($avatarUrl.$_FILES["file"]["name"]))
-                    {
-                        $newName = time().$_FILES["file"]["name"];
+                    $avatarUrl = ROOT . AVATAR_PATH;
+                    if (file_exists($avatarUrl . $_FILES["file"]["name"])) {
+                        $newName = time() . $_FILES["file"]["name"];
+                        $avatarUrl .= $newName;
+                        move_uploaded_file($_FILES["file"]["tmp_name"], $avatarUrl);
+                    } else {
+                        $newName = $_FILES["file"]["name"];
                         $avatarUrl .= $newName;
                         move_uploaded_file($_FILES["file"]["tmp_name"], $avatarUrl);
                     }
-                    else
-                    {
-                        $newName = $_FILES["file"]["name"];
-                        $avatarUrl .= $newName;
-                        move_uploaded_file($_FILES["file"]["tmp_name"], $avatarUrl);                        
-                    }
                 }
             } else {
-                echo "<div class='error'>Invalid file</div>";die;
+                echo "<div class='error'>Invalid file</div>";
+                die;
             }
             $params['img_path'] = $newName;
             // *** 1) Initialise / load image
@@ -107,7 +103,7 @@ Class bannerController Extends adminController {
             // *** 3) Save image
             //$resizeObj -> saveImage($savePath."280x200/".$newName, 100);            
         }
-        /* end upload image */          
+        /* end upload image */
         $id = $this->request->queryString("id");
         $bannerModel = $this->model->get('banner');
         unset($params['file']);
@@ -120,14 +116,16 @@ Class bannerController Extends adminController {
         $this->redirect("/admin/banner/index");
     }
 
-    public function deleteAction() {
+    public function deleteAction()
+    {
         $id = $this->request->queryString("id");
         $model = $this->model->get('banner');
         $model->delete($id);
         $this->redirect("/admin/banner/index");
     }
 
-    public function delAllAction() {
+    public function delAllAction()
+    {
         $para = $this->request->getParams();
         $model = $this->model->get('banner');
         foreach ($para['chkItem'] as $id) {

@@ -1,28 +1,30 @@
 <?php
-/*
+
+/**
  * @author quyetnd
  */
-
-class mvcCore {
+class mvcCore
+{
     /*
      * @the controller path
-     */    
+     */
+
     public $module;
     public $controller;
-    public $action;   
-    
+    public $action;
     private static $instance;
 
-    function __construct() {
+    function __construct()
+    {
         /*         * * get the route from the url ** */
         $requestPath = (empty($_SERVER['REQUEST_URI'])) ? '' : $_SERVER['REQUEST_URI'];
-        if(substr($requestPath, strlen($requestPath)-1,strlen($requestPath)-1) == "/"){
-            $requestPath = substr($requestPath, 0, strlen($requestPath)-1);
+        if (substr($requestPath, strlen($requestPath) - 1, strlen($requestPath) - 1) == "/") {
+            $requestPath = substr($requestPath, 0, strlen($requestPath) - 1);
         }
         $this->model = baseModel::getInstance();
         $rewriteModel = $this->model->get('rewrite');
-        $rewriteInfo = $rewriteModel->getRewriteInfo($requestPath);          
-        if(count($rewriteInfo)>0){
+        $rewriteInfo = $rewriteModel->getRewriteInfo($requestPath);
+        if (count($rewriteInfo) > 0) {
             $route = $rewriteInfo['target_path'];
         } else {
             $route = $requestPath;
@@ -33,7 +35,7 @@ class mvcCore {
         if (empty($route)) {
             $route = 'default/index';
         } else {
-            /* get the parts of the route */            
+            /* get the parts of the route */
             if (isset($parts[0])) {
                 $this->module = $parts[0];
             }
@@ -66,15 +68,17 @@ class mvcCore {
         if (empty($this->action)) {
             $this->action = 'index';
         }
-        $file = APP_PATH . '/modules/' . $this->module .'/controllers/'.$this->controller . 'Controller.php';                
-
+        $file = APP_PATH . '/modules/' . $this->module . '/controllers/' . $this->controller . 'Controller.php';
     }
-    public static function getInstance() {
+
+    public static function getInstance()
+    {
         if (!self::$instance) {
             self::$instance = new mvcCore();
         }
         return self::$instance;
     }
+
 }
 
 ?>

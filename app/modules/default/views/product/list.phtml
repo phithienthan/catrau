@@ -6,14 +6,14 @@
             </header>
             <?php foreach ($products as $product) { ?>                    
                 <article>
-                    <?php if($product['pro_image'] != NULL){?>
-                    <div class="cover" style="background-image: url(&quot;<?php echo AVATAR_RESIZE_PATH."/180x110/".$product['pro_image'] ?>&quot;);"><a href="/<?php echo $product['url_key'];?>/"></a></div>
+                    <?php if ($product['pro_image'] != NULL) { ?>
+                        <div class="cover" style="background-image: url(&quot;<?php echo AVATAR_RESIZE_PATH . "/180x110/" . $product['pro_image'] ?>&quot;);"><a href="/<?php echo $product['url_key']; ?>/"></a></div>
                     <?php } else { ?>
-                        <div class="cover" style="background-image: url(&quot;<?php echo AVATAR_RESIZE_PATH."180x110/".$product['pro_image'] ?>&quot;);"><a href="/<?php echo $product['url_key'];?>/"></a></div>
+                        <div class="cover" style="background-image: url(&quot;<?php echo AVATAR_RESIZE_PATH . "180x110/" . $product['pro_image'] ?>&quot;);"><a href="/<?php echo $product['url_key']; ?>/"></a></div>
                     <?php } ?>
                     <header>
                         <p class="news_title"><a href="/<?php echo $product['url_key']; ?>"><?php echo $product['pro_name']; ?></a></p>
-                        <?php //echo $product['description']; ?>
+                            <?php //echo $product['description']; ?>
                     </header>                    
                 </article>                    
             <?php } ?>

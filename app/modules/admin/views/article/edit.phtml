@@ -7,7 +7,7 @@ $minute = "";
 if ($articleInfo == null) {
     $pageTitle = 'Viết bài';
     $articleInfo['priority'] = '';
-    $articleInfo['detail'] = '';    
+    $articleInfo['detail'] = '';
     $articleInfo['category_id'] = 0;
     $articleInfo['avatar_url'] = '';
     $articleInfo['status'] = 1;
@@ -20,32 +20,37 @@ if ($articleInfo == null) {
     $arrTime = explode(":", @$arrDateTime[1]);
     $hour = @$arrTime[0];
     $minute = @$arrTime[1];
-    
 }
 ?>
 <form id="edit_form" action="/admin/article/post/id/<?php echo $id ?>" method="post" enctype="multipart/form-data">
     <div class="lblHeader"><h2><?php echo $pageTitle ?></h2></div>
     <div class="clr"></div>
     <section class="fl secEditor">        
-    <div class="fl txtEditor">
-    <?php 
-        $oFCKeditor = new FCKeditor('detail');
-        $oFCKeditor -> BasePath = '/lib/fckeditor/';
-        $oFCKeditor -> Value = $articleInfo['detail'];
-        $oFCKeditor -> Height = '500px';
-        $oFCKeditor -> Create(); 
-    ?>  
-    </div>    
-    <div class="lblCategory fl">Ảnh minh họa: </div>
-    <div class="fl lineSpace">       
-        <div class="image_des fl">
-            <img src="<?php if($articleInfo['avatar_url'] != ""){echo AVATAR_PATH.$articleInfo['avatar_url'];} else { echo "/skin/default/images/no-image.png";}?>" height="30px" />
+        <div class="fl txtEditor">
+            <?php
+            $oFCKeditor = new FCKeditor('detail');
+            $oFCKeditor->BasePath = '/lib/fckeditor/';
+            $oFCKeditor->Value = $articleInfo['detail'];
+            $oFCKeditor->Height = '500px';
+            $oFCKeditor->Create();
+            ?>  
+        </div>    
+        <div class="lblCategory fl">Ảnh minh họa: </div>
+        <div class="fl lineSpace">       
+            <div class="image_des fl">
+                <img src="<?php
+                if ($articleInfo['avatar_url'] != "") {
+                    echo AVATAR_PATH . $articleInfo['avatar_url'];
+                } else {
+                    echo "/skin/default/images/no-image.png";
+                }
+                ?>" height="30px" />
+            </div>
+            <div class="upload_file fl">            
+                <input type="file" name="file" id="file">
+                <input type="hidden" name="avatar_url" id="avatar_url" value="<?php echo $articleInfo['avatar_url'] ?>" />
+            </div>                
         </div>
-        <div class="upload_file fl">            
-            <input type="file" name="file" id="file">
-            <input type="hidden" name="avatar_url" id="avatar_url" value="<?php echo $articleInfo['avatar_url']?>" />
-        </div>                
-    </div>
     </section>
     <section class="sidebar fl">
         <div class="lblOrder fl">Thứ tự: </div>
@@ -54,11 +59,15 @@ if ($articleInfo == null) {
         <div class="lblOrder fl">Lưu: </div>
         <div class="fl lineSpace">
             <select name="category_id" id="parent_id" multiple="multiple" class="sltCategory">
-                <option value="0" <?php if($articleInfo['category_id'] == 0) echo "selected=selected"?>>Root</option>
-                <?php foreach($categorys as $category){?>            
-                    <option value="<?php echo $category["id"]?>" <?php if($articleInfo['category_id'] == $category['id']) echo "selected=selected"?>><?php for($k = 0; $k<$category["level"];$k++){ echo "....";} echo $category["title"]?>                
+                <option value="0" <?php if ($articleInfo['category_id'] == 0) echo "selected=selected" ?>>Root</option>
+                    <?php foreach ($categorys as $category) { ?>            
+                    <option value="<?php echo $category["id"] ?>" <?php if ($articleInfo['category_id'] == $category['id']) echo "selected=selected" ?>><?php
+                for ($k = 0; $k < $category["level"]; $k++) {
+                    echo "....";
+                } echo $category["title"]
+                ?>                
                     </option>
-                <?php }?>            
+<?php } ?>            
             </select>
         </div>
         <div class="clr"></div>
@@ -69,31 +78,37 @@ if ($articleInfo == null) {
         <div class="lblOrder fl">Giờ: </div>
         <div class="fl lineSpace">
             <select name="sltH" id ="sltH">
-                <?php for($i=0;$i<24;$i++){
-                    if($i<10){
+                <?php
+                for ($i = 0; $i < 24; $i++) {
+                    if ($i < 10) {
+                        ?>
+                        <option <?php if ($hour == "0$i") { ?>selected="selected"<?php } ?> value="0<?php echo $i; ?>">0<?php echo $i ?></option>
+    <?php } else { ?>
+                        <option <?php if ($hour == "$i") { ?>selected="selected"<?php } ?> value="<?php echo $i; ?>"><?php echo $i ?></option>
+                    <?php }
+                }
                 ?>
-                <option <?php if($hour == "0$i"){?>selected="selected"<?php } ?> value="0<?php echo $i;?>">0<?php echo $i?></option>
-                <?php } else {?>
-                <option <?php if($hour == "$i"){?>selected="selected"<?php } ?> value="<?php echo $i;?>"><?php echo $i?></option>
-                <?php }} ?>
             </select>
             :
             <select name="sltM" id ="sltM">
-                <?php for($i=0;$i<60;$i++){
-                    if($i<10){
-                ?>
-                <option <?php if($minute == "0$i"){?>selected="selected"<?php } ?> value="0<?php echo $i;?>">0<?php echo $i?></option>
-                <?php } else {?>
-                <option <?php if($minute == "$i"){?>selected="selected"<?php } ?> value="<?php echo $i;?>"><?php echo $i?></option>
-                <?php }} ?>
+                <?php
+                for ($i = 0; $i < 60; $i++) {
+                    if ($i < 10) {
+                        ?>
+                        <option <?php if ($minute == "0$i") { ?>selected="selected"<?php } ?> value="0<?php echo $i; ?>">0<?php echo $i ?></option>
+    <?php } else { ?>
+                        <option <?php if ($minute == "$i") { ?>selected="selected"<?php } ?> value="<?php echo $i; ?>"><?php echo $i ?></option>
+    <?php }
+}
+?>
             </select>
         </div>       
         <div class="clr"></div>
         <div class="lblStatus fl">Trạng thái: </div>
         <div class="fl lineSpace">
             <select name="status" id="status">
-                <option <?php if($articleInfo['status']=='0'){?>selected="selected"<?php } ?> value="0">Khóa</option>
-                <option <?php if($articleInfo['status']=='1'){?>selected="selected"<?php } ?> value="1">Xuất bản</option>
+                <option <?php if ($articleInfo['status'] == '0') { ?>selected="selected"<?php } ?> value="0">Khóa</option>
+                <option <?php if ($articleInfo['status'] == '1') { ?>selected="selected"<?php } ?> value="1">Xuất bản</option>
             </select>
         </div>
         <div class="divCmdRight">

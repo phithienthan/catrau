@@ -1,5 +1,5 @@
 <?php
-/*
+/**
  * @author quyetnd
  */
 

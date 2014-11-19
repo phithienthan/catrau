@@ -1,11 +1,14 @@
 <?php
-/*
+
+/**
  * @author quyetnd
  */
 
-Class indexController Extends adminController {
+Class indexController Extends adminController
+{
 
-    public function indexAction() {
+    public function indexAction()
+    {
         /* set a template variable */
         $this->view->data['welcome'] = 'a!';
         /* load the index template */

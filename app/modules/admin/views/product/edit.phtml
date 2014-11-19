@@ -2,7 +2,7 @@
 if ($productInfo == null) {
     $pageTitle = 'Thêm ảnh';
     $productInfo['priority'] = '';
-    $productInfo['pro_detail'] = '';    
+    $productInfo['pro_detail'] = '';
     $productInfo['pro_image'] = '';
     $productInfo['category_id'] = 0;
 } else {
@@ -14,22 +14,28 @@ if ($productInfo == null) {
     <div class="clr"></div>
     <section class="fl secEditor"> 
         <div class="fl txtEditor">
-        <?php 
+            <?php
             $oFCKeditor = new FCKeditor('pro_detail');
-            $oFCKeditor -> BasePath = '/lib/fckeditor/';
-            $oFCKeditor -> Value = $productInfo['pro_detail'];
-            $oFCKeditor -> Height = '500px';
-            $oFCKeditor -> Create(); 
-        ?>    
+            $oFCKeditor->BasePath = '/lib/fckeditor/';
+            $oFCKeditor->Value = $productInfo['pro_detail'];
+            $oFCKeditor->Height = '500px';
+            $oFCKeditor->Create();
+            ?>    
         </div>
         <div class="lblCategory fl">Ảnh minh họa: </div>
         <div class="fl lineSpace">       
             <div class="image_des fl">
-                <img src="<?php if($productInfo['pro_image'] != ""){echo AVATAR_PATH.$productInfo['pro_image'];} else { echo "/skin/default/images/no-image.png";}?>" height="30px" />
+                <img src="<?php
+                if ($productInfo['pro_image'] != "") {
+                    echo AVATAR_PATH . $productInfo['pro_image'];
+                } else {
+                    echo "/skin/default/images/no-image.png";
+                }
+                ?>" height="30px" />
             </div>
             <div class="upload_file fl">            
                 <input type="file" name="file" id="file">
-                <input type="hidden" name="pro_image" id="pro_image" value="<?php echo $productInfo['pro_image']?>" />
+                <input type="hidden" name="pro_image" id="pro_image" value="<?php echo $productInfo['pro_image'] ?>" />
             </div>                
         </div>
     </section>
@@ -39,11 +45,15 @@ if ($productInfo == null) {
         <div class="lblOrder fl">Lưu: </div>
         <div class="fl lineSpace">
             <select name="category_id" id="parent_id" multiple="multiple" class="sltCategory">
-                <option value="0" <?php if($productInfo['category_id'] == 0) echo "selected=selected"?>>Root</option>
-                <?php foreach($categorys as $category){?>            
-                    <option value="<?php echo $category["id"]?>" <?php if($productInfo['category_id'] == $category['id']) echo "selected=selected"?>><?php for($k = 0; $k<$category["level"];$k++){ echo "....";} echo $category["title"]?>                
+                <option value="0" <?php if ($productInfo['category_id'] == 0) echo "selected=selected" ?>>Root</option>
+                    <?php foreach ($categorys as $category) { ?>            
+                    <option value="<?php echo $category["id"] ?>" <?php if ($productInfo['category_id'] == $category['id']) echo "selected=selected" ?>><?php
+                for ($k = 0; $k < $category["level"]; $k++) {
+                    echo "....";
+                } echo $category["title"]
+                ?>                
                     </option>
-                <?php }?>            
+<?php } ?>            
             </select>
         </div>
         <div class="clr"></div>

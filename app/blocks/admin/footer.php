@@ -1,12 +1,14 @@
 <?php
-/*
+
+/**
  * @author quyetnd
  */
+class admin_block_footer Extends baseBlock {
 
-class admin_block_footer Extends baseBlock{    
-    public function init(){        
-
+    public function init() {
+        
     }
+
 }
 
 ?>
