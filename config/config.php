@@ -36,9 +36,9 @@ define('ROOT', dirname(__DIR__));
 define('APP_PATH', ROOT . DS . 'app' . DS);
 define('CONFIG', ROOT . DS . 'config' . DS);
 define('LIB_PATH', ROOT . DS . 'lib' . DS);
-define('CORE_PATH', LIB_PATH . DS . 'sf' . DS);
-define('FCK_PATH', LIB_PATH . DS . 'fckeditor' . DS);
-define('MOBILE_DETECT_PATH', LIB_PATH . DS . 'mobile_detect' . DS);
+define('CORE_PATH', LIB_PATH . 'sf' . DS);
+define('FCK_PATH', LIB_PATH . 'fckeditor' . DS);
+define('MOBILE_DETECT_PATH', LIB_PATH . 'mobile_detect' . DS);
 
 define('SKIN_PATH', '/skin/');
 define('AVATAR_PATH', '/uploads/image/avatar/');

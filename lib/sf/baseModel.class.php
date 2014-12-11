@@ -17,7 +17,7 @@ class baseModel
             'password' => DB_PASS,
             'dbname' => DB_NAME,
         );
-        $this->_mysql = Mysql::getInstance($optionConnect);
+        $this->_mysql = MySQL::getInstance($optionConnect);
     }
 
     public static function getInstance()

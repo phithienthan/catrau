@@ -51,14 +51,14 @@ img {
 	height:30px;
 }
 .CSSmenu A {
-	display:block; background: url(../images/icon-menu.gif) no-repeat scroll 8% 50%;
-	color: #000; height:22px;
-	padding:8px 0px 0px 30px;
+	display:block; background: url(../images/icon-menu.gif) no-repeat scroll 8% 40%;
+	color: #000; height:auto;
+        min-height: 22px;
+	padding:8px 0px 8px 30px;
 }
 .CSSmenu A:hover {
-	display:block; background: url(../images/icon-menu.gif) #0096dc no-repeat scroll 8% 50%;
-	color: #fff; height:22px;
-	padding:8px 0px 0px 30px;
+	display:block; background: url(../images/icon-menu.gif) #0096dc no-repeat scroll 8% 40%;
+	color: #fff;	
 
 }
 .titleT {

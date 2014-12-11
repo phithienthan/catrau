@@ -33,8 +33,8 @@ set_include_path(implode(PATH_SEPARATOR, array(get_include_path(), MOBILE_DETECT
  * Autoloader
  */
 function sf_autoloader($class)
-{
-    include $class . '.class.php';
+{    
+    include $class . '.class.php';    
 }
 
 spl_autoload_register('sf_autoloader');
