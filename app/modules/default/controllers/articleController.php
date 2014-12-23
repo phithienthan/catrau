@@ -20,14 +20,19 @@ Class articleController Extends defaultController
         $article = $articleModel->getArticleInfo($articleId, 1);
         $categoryId = $article['category_id'];
         $categoryInfo = $categoryModel->getCategoryInfo($categoryId);
-        /*         * * set a template variable ** */
+        // Get other article
+        $top = 11;
+        $articles = $articleModel->getAllArticlesByCategoryId($categoryId, 1, $top);                
+        $this->view->data['articles'] = $articles;
+        
+        //set a template variable
         $this->view->data['categoryInfo'] = $categoryInfo;
         $this->view->data['article'] = $article;
 
         $this->view->setTitle($article["title"]);
         $this->view->setDescription($article["title"]);
         $this->view->setKeywords($article["title"]);
-        /*         * * load the index template ** */
+        //load the index template
         $this->view->show('view_detail');
     }
 

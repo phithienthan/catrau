@@ -239,3 +239,12 @@ section.content_detail article .cover:hover{
 .news_item{
     margin: 0 0 0 8px;
 }
+.other_news{
+    font-weight: bold;
+    margin: 8px 0 8px 20px;
+}
+article .cover a{
+    display:block;
+    height: 100%;
+    weight: 100%;
+}
