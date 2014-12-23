@@ -32,13 +32,13 @@ Class linkController Extends adminController
             'index' => 'id'
         ));
         $grid->addColumn(array(
-            'header' => 'Tên banner',
+            'header' => 'Tên liên kết',
             'align' => 'left',
             'width' => '',
             'index' => 'title'
         ));
         $grid->addColumn(array(
-            'header' => 'Link',
+            'header' => 'Đường dẫn',
             'align' => 'center',
             'width' => '',
             'index' => 'link'
