@@ -23,10 +23,21 @@
             </tr>
             <tr>
                 <td align=center><a href="/thu-vien-anh" ><img src="<?php echo SKIN_PATH ?>default/images/photo.jpg"></a></td>
-            </tr>
+            </tr>            
+            <!-- link -->
             <tr>
-                <td class="menuB"><img src="<?php echo SKIN_PATH ?>default/images/icon-video.gif" align=absmiddle>VIDEO</td>
+                <td height=30 class="menuT">
+                <img border="0" src="<?php echo SKIN_PATH ?>default/images/icon-menuT.gif" width="12" height="12" align=absmiddle><span style="margin-left:8px;">LIÊN KẾT</span>
+                </td>
             </tr>
+            <?php foreach ($links as $item) { ?>
+            <tr>
+                <td height="auto" class="CSSmenu"><a href="<?php echo $item['link']; ?>" target="_blank"><?php echo $item['title']; ?></a></td>
+            </tr>
+            <?php } ?>
+            <tr>
+                <td height=1 bgcolor="#505050"></td>
+            </tr>            
         </table>
         <p>
         </td>
